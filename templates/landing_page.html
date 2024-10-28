@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .scrollable-section {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .button-center {
+            display: flex;
+            justify-content: center; /* Center the button horizontally */
+            margin-top: 20px; /* Optional: Add some space above the button */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mt-5">Welcome to Scan my Bookshelf</h1>
+    <div class="upload-container">
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;"
+               onchange="callApi(this)">
+        <button class="btn btn-primary btn-lg" onclick="document.getElementById('imageUpload').click()">Upload Image
+        </button>
+    </div>
+
+    <div class="scrollable-section mt-4 border p-3">
+        <ul id="apiResultsList" class="list-unstyled">
+            <!-- API results will be appended here -->
+        </ul>
+    </div>
+    <div class="container button-center">
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    async function callApi(inputElement) {
+        const file = inputElement.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        try {
+            const response = await fetch("/service/get-recommendation", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.error) {
+                alert(result.error);
+                return;
+            }
+
+            const resultList = document.getElementById("apiResultsList");
+            const listItem = document.createElement("li");
+            listItem.classList.add("border-bottom", "p-2");
+            listItem.textContent = `Result: ${JSON.stringify(result)}`;
+            resultList.appendChild(listItem);
+        } catch (error) {
+            console.error("Error calling API:", error);
+            alert("Failed to call API. Please try again.");
+        }
+    }
+</script>
+
+</body>
+</html>
