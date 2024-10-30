@@ -2,8 +2,6 @@ from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash
 
-import app
-
 
 class User(UserMixin):
     def __init__(self, id, email, password):

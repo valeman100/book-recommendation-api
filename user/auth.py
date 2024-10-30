@@ -1,7 +1,6 @@
-from flask import request, render_template, redirect, session, Blueprint, current_app, flash, url_for
+from flask import request, render_template, redirect, Blueprint, current_app, flash, url_for
 from flask_login import login_required, logout_user, login_user, current_user
-from setuptools.command.easy_install import current_umask
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 
 from user.user_object import User
 
