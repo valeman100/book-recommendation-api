@@ -3,7 +3,7 @@ import mysql.connector
 from dotenv import load_dotenv
 from pino import pino
 
-load_dotenv('.env')
+load_dotenv('/Users/vale/Developer/pycharm/book-recommendation-api/.env')
 logger = pino()
 
 
