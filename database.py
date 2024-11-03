@@ -22,15 +22,15 @@ class Database:
             database=self.database
         )
 
-    def create_user(self, email, password):
+    def create_user(self, email, password, name):
         query = f"""
-        INSERT INTO users (email, password)
-        VALUES (%s, %s)
+        INSERT INTO users (email, password, name)
+        VALUES (%s, %s, %s)
         """
 
         with self.create_connection() as connection:
             with connection.cursor() as cursor:
-                cursor.execute(query, (email, password))
+                cursor.execute(query, (email, password, name))
                 connection.commit()
 
     def get_user_by_email(self, email):
@@ -43,7 +43,7 @@ class Database:
             with connection.cursor() as cursor:
                 cursor.execute(query, (email,))
                 user = cursor.fetchone()
-                return {'id': user[0], 'email': user[1], 'password': user[2]} if user else None
+                return {'id': user[0], 'email': user[1], 'password': user[2], 'name': user[3]} if user else None
 
     def get_user_by_id(self, user_id):
         query = f"""
@@ -55,7 +55,7 @@ class Database:
             with connection.cursor() as cursor:
                 cursor.execute(query, (user_id,))
                 user = cursor.fetchone()
-                return {'id': user[0], 'email': user[1], 'password': user[2]} if user else None
+                return {'id': user[0], 'email': user[1], 'password': user[2], 'name': user[3]} if user else None
 
     def log_call(self, user_id, response, path_to_image):
         recommendations_query = f"""

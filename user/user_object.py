@@ -4,10 +4,11 @@ from werkzeug.security import check_password_hash
 
 
 class User(UserMixin):
-    def __init__(self, id, email, password):
+    def __init__(self, id, email, password, name):
         self.id = id
         self.email = email
         self.password = password
+        self.name = name
 
     @classmethod
     def get_user_by_email(cls, email):
@@ -25,6 +26,7 @@ class User(UserMixin):
 
     def verify_password(self, password):
         return check_password_hash(self.password, password)
+
 
 def load_user(user_id):
     db_user = current_app.db.get_user_by_id(user_id)

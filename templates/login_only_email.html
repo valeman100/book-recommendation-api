@@ -5,17 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styling to enlarge and center the Google button */
+        .google-signin-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px; /* Space above the Google button */
+        }
+
+        .g_id_signin {
+            transform: scale(1.5); /* Increase size of the button */
+            transform-origin: center; /* Keep it centered */
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Login</h2>
-        <form action="/auth" method="POST">
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" class="form-control" name="email" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+<div class="container text-center">
+    <h2 class="mt-5">Login</h2>
+    <form action="/" method="POST">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" name="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+
+    <!-- Google Sign-In Button -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+         data-client_id="{{ google_client_id }}"
+         data-login_uri="https://8ab1-37-161-240-145.ngrok-free.app/google/callback"
+{#         data-login_uri="https://8ab1-37-161-240-145.ngrok-free.app/google/login"#}
+         data-auto_prompt="false">
     </div>
+    <div class="google-signin-container">
+        <div class="g_id_signin"
+             data-type="standard"
+             data-size="large"
+             data-theme="outline"
+             data-text="sign_in_with"
+             data-shape="rectangular"
+             data-logo_alignment="left">
+        </div>
+    </div>
+</div>
 </body>
 </html>
