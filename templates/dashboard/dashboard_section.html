@@ -1,0 +1,29 @@
+<div id="dashboard" class="dashboard-section show">
+    <h2 class="text-center mt-5 title">Upload a picture and wait for the magic!</h2>
+    <p class="text-center recommendation-text">You have 1 recommendation available.</p>
+    <p class="text-center description-text">Be sure to take a bright, clean photo: frame your favorite books and
+        wait for our algorithm to create amazing suggestions for you.</p>
+    <div class="upload-container mt-4">
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="callApi(this)">
+        <button class="btn btn-black btn-lg" onclick="document.getElementById('imageUpload').click()">Upload
+            Image
+        </button>
+    </div>
+
+    <!-- Recent Recommendations Title -->
+    <div class="recent-recommendations-title text-center">Recent recommendations</div>
+
+    <!-- API Box with image and empty results area -->
+    <div class="api-box mt-4">
+        <!-- Placeholder Image -->
+        <img src="https://images.squarespace-cdn.com/content/v1/5876279bbebafb82a7c81c00/f4e17d6a-81db-4a04-9bda-63c86c517778/IMG_3105.jpg"
+             alt="Placeholder Image of Books">
+
+        <!-- Empty Results Area -->
+        <div class="api-results">
+            <ul id="apiResultsList" class="list-unstyled">
+                <!-- API results will be appended here -->
+            </ul>
+        </div>
+    </div>
+</div>

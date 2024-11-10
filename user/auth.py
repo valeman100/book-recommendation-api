@@ -122,7 +122,7 @@ def login():
 @auth_bp.route("/landing-page", methods=["GET"])
 @login_required
 def landing_page():
-    return render_template("landing_page.html", user_id=current_user.id)
+    return render_template("dashboard/index.html", user_id=current_user.id)
 
 
 @auth_bp.route("/logout")

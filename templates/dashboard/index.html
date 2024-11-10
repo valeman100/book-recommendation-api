@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard/styles.css') }}">
+
+</head>
+<body>
+<!-- Header with Logo -->
+<div class="header">
+    <img src="https://seeklogo.com/images/B/book-logo-D4B4CB4B78-seeklogo.com.png" alt="Logo">
+</div>
+
+<div class="container-main">
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+            <li><a href="#" onclick="showSection('history')">History</a></li>
+            <li><a href="#" onclick="showSection('account')">Account</a></li>
+            <li><a href="#" onclick="showSection('plan')">Plan</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        {% include "dashboard/dashboard_section.html" %}
+        {% include "dashboard/history_section.html" %}
+        {% include "dashboard/account_section.html" %}
+        {% include "dashboard/plan_section.html" %}
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='dashboard/script.js') }}"></script>
+</body>
+</html>
