@@ -1,4 +1,3 @@
-import os
 from flask import Flask, redirect, url_for
 from flask_login import LoginManager
 from pino import pino
@@ -8,6 +7,7 @@ from database import Database
 from user.user_object import load_user
 from dotenv import load_dotenv
 from config import Config
+from flask_cors import CORS
 
 load_dotenv('/Users/vale/Developer/pycharm/book-recommendation-api/.env')
 
@@ -19,6 +19,7 @@ login_manager.login_view = "auth"
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config.from_object(Config)
 
     # Initialize and configure extensions

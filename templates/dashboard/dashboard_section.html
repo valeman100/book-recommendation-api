@@ -1,29 +1,23 @@
-<div id="dashboard" class="dashboard-section show">
-    <h2 class="text-center mt-5 title">Upload a picture and wait for the magic!</h2>
-    <p class="text-center recommendation-text">You have 1 recommendation available.</p>
-    <p class="text-center description-text">Be sure to take a bright, clean photo: frame your favorite books and
-        wait for our algorithm to create amazing suggestions for you.</p>
+<div id="dashboard" class="dashboard-section show" style="max-height: 100vh; overflow-y: auto;">
+    <h2 class="text-center mt-3 title">Upload a picture and wait for the magic!</h2>
+    <p class="text-center recommendation-text" id="recommendationCount">You have 1 recommendation available.</p>
+    <p class="text-center description-text">Be sure to take a bright, clean photo: frame your favorite books and wait
+        for our algorithm to create amazing suggestions for you.</p>
     <div class="upload-container mt-4">
-        <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="callApi(this)">
-        <button class="btn btn-black btn-lg" onclick="document.getElementById('imageUpload').click()">Upload
-            Image
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;"
+               onchange="recommendation(this, {{ user_id }})">
+        <button class="btn btn-black btn-lg" onclick="document.getElementById('imageUpload').click()">Upload Image
         </button>
     </div>
 
-    <!-- Recent Recommendations Title -->
-    <div class="recent-recommendations-title text-center">Recent recommendations</div>
-
-    <!-- API Box with image and empty results area -->
-    <div class="api-box mt-4">
-        <!-- Placeholder Image -->
-        <img src="https://images.squarespace-cdn.com/content/v1/5876279bbebafb82a7c81c00/f4e17d6a-81db-4a04-9bda-63c86c517778/IMG_3105.jpg"
-             alt="Placeholder Image of Books">
-
-        <!-- Empty Results Area -->
-        <div class="api-results">
-            <ul id="apiResultsList" class="list-unstyled">
-                <!-- API results will be appended here -->
-            </ul>
-        </div>
+    <div id="resultContainer" class="result-container mt-4 text-center">
+        <p id="apiResultText" class="mt-3"></p>
+        <div id="recommendedBooks" class="recommended-books mt-4"></div>
+        <img id="uploadedImage" src="" alt="Uploaded Image"
+             style="display: none; max-width: 100%; height: auto; margin: 20px auto;">
     </div>
+
+
 </div>
+
+<script src="{{ url_for('static', filename='dashboard/script.js') }}"></script>

@@ -36,7 +36,7 @@ def auth():
         email = request.form.get("email").lower()
 
         user = User.get_user_by_email(email)
-        if user.password:
+        if user and user.password is not None:
             return redirect(url_for("auth.login", email=email))
         elif user:
             flash("You have previously logged in with Google. Please login with Google.")
@@ -85,7 +85,7 @@ def register():
             return render_template("register.html", message="Passwords do not match.")
 
         user = User.get_user_by_email(email)
-        if not user.password:
+        if user and user.password is None:
             flash("You have previously logged in with Google. Please login with Google.")
             return redirect(url_for("auth.auth"))
         elif user:
@@ -93,6 +93,7 @@ def register():
 
         hashed_password = generate_password_hash(password)
         current_app.db.create_user(email, hashed_password, name)
+        user = User.get_user_by_email(email)
         login_user(user)
 
         return redirect(url_for("auth.landing_page"))

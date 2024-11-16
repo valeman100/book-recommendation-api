@@ -1,5 +1,5 @@
 :root {
-    --sidebar-width: 13%; /* Declare the sidebar width */
+    --sidebar-width: 13%; /* Sidebar width */
 }
 
 * {
@@ -39,6 +39,7 @@ body {
     overflow: hidden;
 }
 
+/* Sidebar */
 .sidebar {
     width: var(--sidebar-width);
     background-color: #f3f4f6;
@@ -52,10 +53,8 @@ body {
     line-height: 1.5vw;
 }
 
-
 .sidebar ul {
     list-style: none;
-
 }
 
 .sidebar ul li {
@@ -72,13 +71,19 @@ body {
     color: #007bff;
 }
 
+/* Content Section */
 .content {
     width: calc(100% - var(--sidebar-width));
-    padding: 40px;
+    padding: 0.1vw 5vw;
     overflow-y: auto;
 }
 
-.account-section, .dashboard-section, .plan-section, .history-section {
+/* Visibility Control */
+.account-section,
+.dashboard-section,
+.plan-section,
+.history-section,
+.logout-section {
     display: none;
 }
 
@@ -86,6 +91,7 @@ body {
     display: block;
 }
 
+/* Forms and Buttons */
 .form-group label {
     font-weight: bold;
 }
@@ -101,6 +107,7 @@ body {
     border: none;
 }
 
+/* Upload Container */
 .upload-container {
     display: flex;
     justify-content: center;
@@ -108,6 +115,7 @@ body {
     height: 100px;
 }
 
+/* API Box */
 .api-box {
     display: flex;
     flex-direction: column;
@@ -145,6 +153,7 @@ body {
     }
 }
 
+/* Text Styling */
 .small-text {
     font-size: 12px;
     font-weight: bold;
@@ -176,6 +185,7 @@ body {
     margin: 20px 0;
 }
 
+/* History Section */
 .history-title {
     font-size: 16px;
     font-weight: bold;
@@ -188,9 +198,36 @@ body {
     padding-right: 15px; /* Padding for scrollbar */
 }
 
+/* Invoices Title */
 .invoices-title {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     margin: 10px 0;
+}
+
+/* Logout Section with Manual Vertical Adjustment */
+.logout-section {
+    justify-content: center; /* Center horizontally */
+    height: 100%;           /* Full viewport height */
+    width: 100%;             /* Full viewport width */
+    padding-top: 10vw;
+    padding-left: 30vw;
+}
+
+/* Logout Button Styling */
+#logoutButton {
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: red;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+
+#logoutButton:hover {
+    background-color: #c0392b; /* Darker red on hover */
 }

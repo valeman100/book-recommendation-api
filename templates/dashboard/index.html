@@ -22,7 +22,7 @@
             <li><a href="#" onclick="showSection('history')">History</a></li>
             <li><a href="#" onclick="showSection('account')">Account</a></li>
             <li><a href="#" onclick="showSection('plan')">Plan</a></li>
-            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            <li><a href="#" onclick="showSection('logout')">Logout</a></li>
         </ul>
     </div>
 
@@ -31,6 +31,7 @@
         {% include "dashboard/history_section.html" %}
         {% include "dashboard/account_section.html" %}
         {% include "dashboard/plan_section.html" %}
+        {% include "dashboard/logout_section.html" %}
     </div>
 </div>
 
