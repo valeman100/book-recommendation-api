@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from config import Config
 from flask_cors import CORS
 
-load_dotenv('/Users/vale/Developer/pycharm/book-recommendation-api/.env')
+load_dotenv('.env')
 
 logger = pino()
 
