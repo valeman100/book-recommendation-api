@@ -33,6 +33,17 @@ class Database:
                 cursor.execute(query, (email, password, name))
                 connection.commit()
 
+    def create_subscription(self, user_id):
+        query = f"""
+        INSERT INTO subscriptions (user_id)
+        VALUES (%s)
+        """
+
+        with self.create_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(query, (user_id,))
+                connection.commit()
+
     def get_user_by_email(self, email):
         query = f"""
         SELECT * FROM users
@@ -74,3 +85,51 @@ class Database:
                 cursor.execute(recommendations_query, (user_id, response, path_to_image))
                 cursor.execute(subscriptions_query)
                 connection.commit()
+
+    def delete_user(self, user_id):
+        user_query = f"""
+        DELETE FROM users
+        WHERE id = %s
+        """
+        subscription_query = f"""
+        DELETE FROM subscriptions
+        WHERE user_id = %s
+        """
+
+        recommendations_query = f"""
+        DELETE FROM recommendations
+        WHERE user_id = %s
+        """
+
+        with self.create_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(user_query, (user_id,))
+                cursor.execute(subscription_query, (user_id,))
+                cursor.execute(recommendations_query, (user_id,))
+                connection.commit()
+
+    def get_remaining_calls(self, id):
+        query = f"""
+        SELECT remaining_calls
+        FROM subscriptions
+        WHERE user_id = {id}
+        """
+
+        with self.create_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                remaining_calls = cursor.fetchone()[0]
+                return remaining_calls
+
+    def get_previous_recommendations(self, user_id):
+        query = f"""
+        SELECT response, image_path, created_at
+        FROM recommendations
+        WHERE user_id = {user_id}
+        """
+
+        with self.create_connection() as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                recommendations = cursor.fetchall()
+                return recommendations

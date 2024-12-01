@@ -83,7 +83,7 @@ body {
 .dashboard-section,
 .plan-section,
 .history-section,
-.logout-section {
+.settings-section {
     display: none;
 }
 
@@ -206,28 +206,5 @@ body {
     margin: 10px 0;
 }
 
-/* Logout Section with Manual Vertical Adjustment */
-.logout-section {
-    justify-content: center; /* Center horizontally */
-    height: 100%;           /* Full viewport height */
-    width: 100%;             /* Full viewport width */
-    padding-top: 10vw;
-    padding-left: 30vw;
-}
 
-/* Logout Button Styling */
-#logoutButton {
-    font-size: 1.5rem;
-    color: #fff;
-    background-color: red;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s;
-}
 
-#logoutButton:hover {
-    background-color: #c0392b; /* Darker red on hover */
-}

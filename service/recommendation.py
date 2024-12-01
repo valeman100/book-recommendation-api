@@ -1,3 +1,5 @@
+import json
+
 from flask import Blueprint, jsonify, request
 import requests
 from flask_login import login_required, current_user
@@ -23,3 +25,5 @@ def get_recommendation():
     except requests.exceptions.RequestException as e:
         print(f"Error calling external API: {e}")
         return jsonify({"error": "Failed to call API"}), 500
+
+

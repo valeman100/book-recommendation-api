@@ -56,4 +56,3 @@ def list_routes(app):
         methods = ', '.join(sorted(rule.methods))
         logger.info(f"Endpoint: {endpoint}, Path: {path}, Methods: {methods}")
 
-#

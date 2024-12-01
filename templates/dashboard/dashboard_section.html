@@ -1,13 +1,20 @@
 <div id="dashboard" class="dashboard-section show" style="max-height: 100vh; overflow-y: auto;">
     <h2 class="text-center mt-3 title">Upload a picture and wait for the magic!</h2>
-    <p class="text-center recommendation-text" id="recommendationCount">You have 1 recommendation available.</p>
+    <p class="text-center recommendation-text" id="recommendationCount">You have {{ remaining_calls }} recommendation available.</p>
     <p class="text-center description-text">Be sure to take a bright, clean photo: frame your favorite books and wait
         for our algorithm to create amazing suggestions for you.</p>
+
     <div class="upload-container mt-4">
         <input type="file" id="imageUpload" accept="image/*" style="display: none;"
                onchange="recommendation(this, {{ user_id }})">
         <button class="btn btn-black btn-lg" onclick="document.getElementById('imageUpload').click()">Upload Image
         </button>
+    </div>
+
+    <!-- Loading Bar -->
+    <div id="loadingBarContainer" class="loading-bar-container" style="display: none;">
+        <div class="loading-bar"></div>
+        <p class="loading-message">Processing your image... Please wait.</p>
     </div>
 
     <div id="resultContainer" class="result-container mt-4 text-center">
@@ -16,8 +23,50 @@
         <img id="uploadedImage" src="" alt="Uploaded Image"
              style="display: none; max-width: 100%; height: auto; margin: 20px auto;">
     </div>
-
-
 </div>
 
 <script src="{{ url_for('static', filename='dashboard/script.js') }}"></script>
+
+<style>
+    .loading-bar-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .loading-bar {
+        width: 80%;
+        height: 10px;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .loading-bar::before {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 0;
+        background-color: #4CAF50;
+        animation: loading 2s linear infinite;
+    }
+
+    .loading-message {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    @keyframes loading {
+        0% {
+            width: 0;
+        }
+        50% {
+            width: 50%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+</style>

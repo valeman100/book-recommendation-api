@@ -1,0 +1,50 @@
+<div id="settings" class="settings-section">
+    <!-- Logout Button -->
+    <button id="logoutButton" class="action-button" onclick="window.location.href='{{ url_for('auth.logout') }}'">
+        Logout
+    </button>
+
+    <!-- Delete Account Button -->
+    <button id="deleteAccountButton" class="action-button delete-button"
+            onclick="confirmDelete('{{ url_for('auth.delete_account') }}')">
+        Delete Account
+    </button>
+</div>
+
+<script src="{{ url_for('static', filename='dashboard/script.js') }}"></script>
+
+<style>
+    /* General styling for the container */
+    #settings {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* Space between buttons */
+        margin-top: 30px;
+    }
+
+    /* Button styles */
+    .action-button {
+        background-color: #4CAF50; /* Green background */
+        color: white; /* White text */
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .action-button:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+
+    /* Delete button specific styles */
+    .delete-button {
+        background-color: #f44336; /* Red background */
+    }
+
+    .delete-button:hover {
+        background-color: #d32f2f; /* Darker red on hover */
+    }
+</style>

@@ -1,6 +1,6 @@
 function showSection(section) {
     // Hide all sections
-    document.querySelectorAll('.dashboard-section, .history-section, .account-section, .plan-section, .logout-section').forEach(sec => {
+    document.querySelectorAll('.dashboard-section, .history-section, .account-section, .plan-section, .settings-section').forEach(sec => {
         sec.classList.remove('show');
     });
     // Show the selected section
@@ -8,6 +8,8 @@ function showSection(section) {
 }
 
 async function recommendation(input, user_id) {
+    document.getElementById('loadingBarContainer').style.display = 'block';
+
     const file = input.files[0];
     if (!file) return;
 
@@ -31,18 +33,28 @@ async function recommendation(input, user_id) {
         const response = await fetch(`http://localhost:3000/my-bookshelf/get-recommendation/${user_id}`, {
             method: 'POST',
             body: formData
-        });
+        })
 
         if (!response.ok) {
+            // if status code is 429, display error message
+            if (response.status === 429) {
+                const data = await response.json();
+                alert(data.error);
+                document.getElementById('loadingBarContainer').style.display = 'none';
+                return;
+            }
             throw new Error(`Network response was not ok: ${response.statusText}`);
         }
 
         const data = await response.json();
+        document.getElementById('loadingBarContainer').style.display = 'none';
+
         displayResults(data);
 
     } catch (error) {
         console.error('Error:', error);
         alert("Failed to call API. Please try again.");
+        document.getElementById('loadingBarContainer').style.display = 'none';
     }
 }
 
@@ -102,6 +114,13 @@ function displayResults(data) {
     // Ensure the section is visible
     showSection("dashboard");
 
+}
+
+function confirmDelete(deleteUrl) {
+    const userConfirmed = confirm("Are you sure you want to delete your account? This action cannot be undone.");
+    if (userConfirmed) {
+        window.location.href = deleteUrl;
+    }
 }
 
 

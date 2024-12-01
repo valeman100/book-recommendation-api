@@ -1,34 +1,87 @@
 <div id="history" class="history-section">
-    <div class="history-title">Photo 1: crime books</div>
-    <div class="api-box">
-        <img src="https://images.squarespace-cdn.com/content/v1/5876279bbebafb82a7c81c00/f4e17d6a-81db-4a04-9bda-63c86c517778/IMG_3105.jpg"
-             alt="Placeholder Image of Books">
-    </div>
-
-    <div class="history-title">Photo 2: George Orwell and classic literature</div>
-    <div class="api-box">
-        <img src="https://images.squarespace-cdn.com/content/v1/5876279bbebafb82a7c81c00/f4e17d6a-81db-4a04-9bda-63c86c517778/IMG_3105.jpg"
-             alt="Placeholder Image of Books">
-    </div>
-
-    <div class="history-title">Photo 3: Agatha Christie</div>
-    <div class="api-box">
-        <img src="https://images.squarespace-cdn.com/content/v1/5876279bbebafb82a7c81c00/f4e17d6a-81db-4a04-9bda-63c86c517778/IMG_3105.jpg"
-             alt="Placeholder Image of Books">
-    </div>
-
-    <div class="history-title">Photo 4: history books</div>
-    <div class="api-box">
-        <img src="https://images.squarespace-cdn.com/content/v1/5876279bbebafb82a7c81c00/f4e17d6a-81db-4a04-9bda-63c86c517778/IMG_3105.jpg"
-             alt="Placeholder Image of Books">
-    </div>
-
-    <div class="history-title">Photo 5: cooking books</div>
-    <div class="api-box">
-        <img src="https://images.squarespace-cdn.com/content/v1/5876279bbebafb82a7c81c00/f4e17d6a-81db-4a04-9bda-63c86c517778/IMG_3105.jpg"
-             alt="Placeholder Image of Books">
-    </div>
-
-    <!-- Add space at the end of the history section -->
-    <div style="height: 200px;"></div>
+    {% if previous_recommendations and previous_recommendations|length > 0 %}
+        {% for entry in previous_recommendations %}
+            <div class="history-entry">
+                <div class="history-title">
+                    Photo {{ loop.index }}: {{ entry.photo_description or "Untitled" }}
+                </div>
+                <div class="api-box">
+                    <img src="{{ entry.photo_url or '/static/images/placeholder.jpg' }}"
+                         alt="{{ entry.photo_description or 'Uploaded photo' }}">
+                </div>
+                <div class="book-list">
+                    {% if entry.recommended_books and entry.recommended_books|length > 0 %}
+                        {% for book in entry.recommended_books %}
+                            <div class="book-card">
+                                <h3>{{ book.title }}</h3>
+                                <p><strong>Author:</strong> {{ book.author }}</p>
+                                <p><strong>Description:</strong> {{ book.description }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No recommendations for this photo.</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No history available.</p>
+    {% endif %}
 </div>
+
+<style>
+    .history-section {
+        margin: 20px auto;
+        max-width: 800px;
+        padding: 20px;
+        border-top: 2px solid #ddd;
+    }
+
+    .history-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin: 20px 0 10px;
+        color: #333;
+    }
+
+    .api-box {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .api-box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-list {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .book-card {
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+    }
+
+    .book-card:last-child {
+        border-bottom: none;
+    }
+
+    .book-card h3 {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .book-card p {
+        margin: 5px 0;
+        font-size: 0.9rem;
+        color: #555;
+    }
+</style>

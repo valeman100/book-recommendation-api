@@ -61,6 +61,8 @@ def google_callback():
 
         if not user:
             current_app.db.create_user(email, None, name)
+            user = User.get_user_by_email(email)
+            current_app.db.create_subscription(user.id)
 
         user = User.get_user_by_email(email)
         login_user(user)
@@ -94,6 +96,7 @@ def register():
         hashed_password = generate_password_hash(password)
         current_app.db.create_user(email, hashed_password, name)
         user = User.get_user_by_email(email)
+        current_app.db.create_subscription(user.id)
         login_user(user)
 
         return redirect(url_for("auth.landing_page"))
@@ -123,7 +126,9 @@ def login():
 @auth_bp.route("/landing-page", methods=["GET"])
 @login_required
 def landing_page():
-    return render_template("dashboard/index.html", user_id=current_user.id)
+    return render_template("dashboard/index.html", user_id=current_user.id,
+                           remaining_calls=current_user.remaining_calls,
+                           previous_recommendations=current_user.get_previous_recommendations())
 
 
 @auth_bp.route("/logout")
@@ -131,5 +136,15 @@ def landing_page():
 def logout():
     logout_user()
     flash("You have been logged out")
+    return render_template("login_only_email.html",
+                           google_client_id=current_app.config['GOOGLE_CLIENT_ID'])
+
+
+@auth_bp.route("/delete-account")
+@login_required
+def delete_account():
+    current_app.db.delete_user(current_user.id)
+    logout_user()
+    flash("Account deleted")
     return render_template("login_only_email.html",
                            google_client_id=current_app.config['GOOGLE_CLIENT_ID'])
