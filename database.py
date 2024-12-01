@@ -19,7 +19,7 @@ class Database:
             host=self.host,
             user=self.user,
             password=self.password,
-            database=self.database
+            # database=self.database
         )
 
     def create_user(self, email, password, name):
