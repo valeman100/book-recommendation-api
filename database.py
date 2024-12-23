@@ -18,7 +18,6 @@ class Database:
         return mysql.connector.connect(
             host=self.host,
             user=self.user,
-            port=3306,
             password=self.password,
             database=self.database
         )
