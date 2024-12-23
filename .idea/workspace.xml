@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27c6ec5b-0a05-405c-b1c4-cb77c57821a9" name="Changes" comment="git">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="27c6ec5b-0a05-405c-b1c4-cb77c57821a9" name="Changes" comment="git resetg">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +168,7 @@
       <workItem from="1732051578332" duration="6976000" />
       <workItem from="1732643762808" duration="1900000" />
       <workItem from="1733067462376" duration="7737000" />
-      <workItem from="1734943660719" duration="11759000" />
+      <workItem from="1734943660719" duration="15378000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -274,7 +274,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734981299153</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="git resetg">
+      <option name="closed" value="true" />
+      <created>1734981475469</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1734981475469</updated>
+    </task>
+    <task id="LOCAL-00015" summary="git resetg">
+      <option name="closed" value="true" />
+      <created>1734981519856</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1734981519856</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,14 +338,15 @@
     <MESSAGE value="dashboard improvements" />
     <MESSAGE value="env" />
     <MESSAGE value="git" />
-    <option name="LAST_COMMIT_MESSAGE" value="git" />
+    <MESSAGE value="git resetg" />
+    <option name="LAST_COMMIT_MESSAGE" value="git resetg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/database.py</url>
-          <line>121</line>
+          <line>120</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>

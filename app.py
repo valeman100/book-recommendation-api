@@ -43,7 +43,7 @@ def create_app():
 
 def webhook():
     if request.method == 'POST':
-        repo = git.Repo('path/to/git_repo')
+        repo = git.Repo('/home/valeman100/book-recommendation-api/.git')
         origin = repo.remotes.origin
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
