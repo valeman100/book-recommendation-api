@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, request
 from flask_login import LoginManager
 from pino import pino
 from service.recommendation import service_bp
@@ -8,6 +8,7 @@ from user.user_object import load_user
 from dotenv import load_dotenv
 from config import Config
 from flask_cors import CORS
+import git
 
 load_dotenv('.env')
 
@@ -36,8 +37,18 @@ def create_app():
     # Add routes
     app.add_url_rule("/health", view_func=health_check)
     app.add_url_rule("/", view_func=index)
+    app.add_url_rule("/update_server", view_func=webhook, methods=['POST'])
 
     return app
+
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('path/to/git_repo')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
 
 
 def health_check():

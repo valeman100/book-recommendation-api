@@ -12,14 +12,15 @@ class Database:
         self.host = os.environ.get('DB_HOST')
         self.user = os.environ.get('DB_USERNAME')
         self.password = os.environ.get('DB_PASSWORD')
-        self.database = 'book_recommendation_db'
+        self.database = os.environ.get('DB_NAME')
 
     def create_connection(self):
         return mysql.connector.connect(
             host=self.host,
             user=self.user,
+            port=3306,
             password=self.password,
-            # database=self.database
+            database=self.database
         )
 
     def create_user(self, email, password, name):

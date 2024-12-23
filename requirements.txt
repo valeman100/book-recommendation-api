@@ -12,6 +12,8 @@ Flask==2.3.3
 Flask-Cors==5.0.0
 Flask-Login==0.6.3
 Flask-OAuthlib==0.9.6
+gitdb==4.0.11
+GitPython==3.1.43
 google==3.0.0
 google-api-core==2.22.0
 google-api-python-client==2.151.0
@@ -39,6 +41,7 @@ requests==2.32.3
 requests-oauthlib==1.1.0
 rsa==4.9
 six==1.16.0
+smmap==5.0.1
 soupsieve==2.6
 style==1.1.6
 uritemplate==4.1.1
