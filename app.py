@@ -15,7 +15,6 @@ from flask_cors import CORS
 import git
 
 load_dotenv('.env')
-
 logger = pino()
 login_manager = LoginManager()
 login_manager.login_view = "auth"
