@@ -92,7 +92,7 @@ def webhook():
                 payload=payload))
             abort(abort_code)
 
-        if payload['ref'] != 'refs/heads/master':
+        if payload['ref'] != 'refs/heads/main':
             return json.dumps({'msg': 'Not master; ignoring'})
 
         repo = git.Repo('/home/valeman100/book-recommendation-api/.git')
