@@ -1,5 +1,4 @@
 import json
-
 from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash
@@ -11,7 +10,7 @@ class User(UserMixin):
         self.email = email
         self.password = password
         self.name = name
-        self.remaining_calls = current_app.db.get_remaining_calls(id)
+        self.remaining_calls = self.get_remaining_calls()
 
     @classmethod
     def get_user_by_email(cls, email):
@@ -38,6 +37,11 @@ class User(UserMixin):
                                    "photo_description": str(recommendation[2]),
                                    **json.loads(recommendation[0])})
         return recommendations
+
+    def get_remaining_calls(self):
+        calls = current_app.db.get_remaining_calls(self.id)
+        self.remaining_calls = calls if calls else 0
+        return self.remaining_calls
 
 
 def load_user(user_id):

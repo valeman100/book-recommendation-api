@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27c6ec5b-0a05-405c-b1c4-cb77c57821a9" name="Changes" comment="git resetg">
+    <list default="true" id="27c6ec5b-0a05-405c-b1c4-cb77c57821a9" name="Changes" comment="git path">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_object.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +63,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "Flask server.Flask (app.py).executor": "Debug",
     "Flask server.Flask (run.py).executor": "Debug",
@@ -92,7 +95,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.js_debugger">
+  <component name="RunManager" selected="Flask server.book-recommendation-api">
     <configuration name="Flask (run.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
       <module name="book-recommendation-api" />
       <option name="target" value="$PROJECT_DIR$/run.py" />
@@ -110,6 +113,7 @@
       <method v="2" />
     </configuration>
     <configuration name="book-recommendation-api" type="Python.FlaskServer">
+      <option name="additionalOptions" value="--debug" />
       <module name="book-recommendation-api" />
       <option name="target" value="$PROJECT_DIR$/app.py" />
       <option name="targetType" value="PATH" />
@@ -117,6 +121,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.11 (book-recommendation-api)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -168,7 +173,7 @@
       <workItem from="1732051578332" duration="6976000" />
       <workItem from="1732643762808" duration="1900000" />
       <workItem from="1733067462376" duration="7737000" />
-      <workItem from="1734943660719" duration="15378000" />
+      <workItem from="1734943660719" duration="18873000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -290,7 +295,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734981519856</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="git path">
+      <option name="closed" value="true" />
+      <created>1734991230561</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1734991230561</updated>
+    </task>
+    <task id="LOCAL-00017" summary="git path">
+      <option name="closed" value="true" />
+      <created>1734991748549</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1734991748549</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,15 +360,16 @@
     <MESSAGE value="env" />
     <MESSAGE value="git" />
     <MESSAGE value="git resetg" />
-    <option name="LAST_COMMIT_MESSAGE" value="git resetg" />
+    <MESSAGE value="git path" />
+    <option name="LAST_COMMIT_MESSAGE" value="git path" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/database.py</url>
-          <line>120</line>
-          <option name="timeStamp" value="22" />
+          <url>file://$PROJECT_DIR$/user/auth.py</url>
+          <line>97</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -358,7 +380,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/book_recommendation_api$book_recommendation_api.coverage" NAME="book-recommendation-api Coverage Results" MODIFIED="1732643949491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/book_recommendation_api$book_recommendation_api.coverage" NAME="book-recommendation-api Coverage Results" MODIFIED="1735034489005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/book_recommendation_api$Flask__run_py_.coverage" NAME="Flask (run.py) Coverage Results" MODIFIED="1732643783267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/book_recommendation_api$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1730623508302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

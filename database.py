@@ -118,7 +118,10 @@ class Database:
         with self.create_connection() as connection:
             with connection.cursor() as cursor:
                 cursor.execute(query)
-                remaining_calls = cursor.fetchone()[0]
+                calls = cursor.fetchone()
+                if calls is None:
+                    return None
+                remaining_calls = calls[0]
                 return remaining_calls
 
     def get_previous_recommendations(self, user_id):
